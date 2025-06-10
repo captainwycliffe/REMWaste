@@ -44,7 +44,7 @@ Redesign the "Choose Your Skip Size" page (accessible via postcode `LE10 1SH`, s
 
 ## 📱 Screenshots
 
-<img src="https://i.postimg.cc/D8kMQjdY/Screenshot-From-2025-06-10-23-20-56.png" alt="Screenshot-From-2025-06-10-23-20-56" style="width: 100%;" />
+<img src="https://i.postimg.cc/D8kMQjdY/Screenshot-From-2025-06-10-23-20-56.png" alt="Screenshot-From-2025-06-10-23-20-56" />
 <a href="https://postimg.cc/t7VcxQPx" target="_blank">
   <img src="https://i.postimg.cc/t7VcxQPx/Screenshot-From-2025-06-10-23-22-23.png" alt="Screenshot-From-2025-06-10-23-22-23" style="width: 100%;" />
 </a><br/><br/>

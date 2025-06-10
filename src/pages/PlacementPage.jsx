@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight, Camera, MapPin, Shield, Clock, AlertTriangle, CheckCircle, Upload, X, Info, Star, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'
+import StepProgress from '../components/StepProgress'
 
 export default function PlacementPage() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -102,13 +103,7 @@ export default function PlacementPage() {
         <div className="max-w-4xl mx-auto">
           {/* Header Section */}
           <div className={`mb-12 transition-all duration-1000 ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 bg-blue-500/20 rounded-xl">
-                <MapPin className="w-6 h-6 text-blue-400" />
-              </div>
-              <div className="h-px bg-gradient-to-r from-blue-400 to-transparent flex-1" />
-              <span className="text-sm text-blue-400 font-medium">Step 2 of 4</span>
-            </div>
+            <StepProgress />
             
             <h1 className="text-4xl sm:text-6xl font-black mb-4 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent leading-tight">
               Where will the skip be placed?

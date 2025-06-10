@@ -73,5 +73,5 @@ GitHub: captainwycliffe
 npm install
 
 # Start development server
-npm start
+npm run dev
 

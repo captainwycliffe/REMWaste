@@ -54,6 +54,17 @@ Redesign the "Choose Your Skip Size" page (accessible via postcode `LE10 1SH`, s
 
 
 ---
+## 🙌 Notes
+-This is a front-end only demo; no backend services were included or modified.
+
+-The mock data and flows are intended to simulate the original user journey as closely as possible.
+
+-The goal was not just to redesign a page, but to demonstrate my ability to handle scalable UI improvements across a user flow.
+
+## ✨ Contact
+Feel free to reach out if you'd like to discuss the project further.
+
+GitHub: captainwycliffe
 
 ## 🚀 Getting Started
 
@@ -63,3 +74,4 @@ npm install
 
 # Start development server
 npm start
+

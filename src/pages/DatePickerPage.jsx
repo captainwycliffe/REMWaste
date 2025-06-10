@@ -13,18 +13,21 @@ import {
   Shield,
   Star,
 } from "lucide-react";
-import PaymentDetails from '../components/PaymentDetails'
+
+import { useNavigate } from 'react-router-dom'
+import StepProgress from '../components/StepProgress'
+
 
 export default function PremiumDeliveryScheduler() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState("morning");
-  const [calendarMode, setCalendarMode] = useState("month"); // 'month' or 'year'
+  const [calendarMode, setCalendarMode] = useState("month"); 
   const [isAnimating, setIsAnimating] = useState(false);
   const [hoveredDate, setHoveredDate] = useState(null);
   const [collectionDate, setCollectionDate] = useState(null);
 
-  // Update collection date when delivery date changes
+
   useEffect(() => {
     if (selectedDate) {
       const newCollectionDate = new Date(selectedDate);
@@ -42,6 +45,8 @@ export default function PremiumDeliveryScheduler() {
     });
   };
 
+  const navigate = useNavigate()
+
 //   const formatShortDate = (date) => {
 //     return date.toLocaleDateString("en-US", {
 //       month: "short",
@@ -52,7 +57,7 @@ export default function PremiumDeliveryScheduler() {
   const isDateAvailable = (date) => {
     const today = new Date();
     const minDate = new Date(today);
-    minDate.setDate(today.getDate() + 5); // 5 working days for permit
+    minDate.setDate(today.getDate() + 5); 
 
     const day = date.getDay();
     const isWeekend = day === 0 || day === 6;
@@ -74,7 +79,6 @@ export default function PremiumDeliveryScheduler() {
     const firstDay = getFirstDayOfMonth(currentDate);
     const days = [];
 
-    // Previous month's trailing days
     const prevMonth = new Date(currentDate);
     prevMonth.setMonth(prevMonth.getMonth() - 1);
     const daysInPrevMonth = getDaysInMonth(prevMonth);
@@ -85,7 +89,6 @@ export default function PremiumDeliveryScheduler() {
       days.push({ date, isCurrentMonth: false });
     }
 
-    // Current month days
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(
         currentDate.getFullYear(),
@@ -95,8 +98,8 @@ export default function PremiumDeliveryScheduler() {
       days.push({ date, isCurrentMonth: true });
     }
 
-    // Next month's leading days
-    const totalCells = 42; // 6 rows × 7 days
+
+    const totalCells = 42; 
     const remainingCells = totalCells - days.length;
     const nextMonth = new Date(currentDate);
     nextMonth.setMonth(nextMonth.getMonth() + 1);
@@ -193,18 +196,21 @@ export default function PremiumDeliveryScheduler() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
-      {/* Sophisticated background elements */}
+      
+
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-600/5 rounded-full blur-3xl animate-pulse animation-delay-4000"></div>
 
-        {/* Grid pattern overlay */}
+
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20"></div>
       </div>
+          <div className="mt-8">
+            <StepProgress />
+          </div>
 
       <div className="relative z-10 container mx-auto px-6 py-8 max-w-7xl">
-        {/* Premium Header */}
         <div className="text-center mb-12 backdrop-blur-xl bg-white/5 rounded-3xl p-8 border border-white/10 shadow-2xl relative">
           <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
             <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-cyan-500 px-4 py-2 rounded-full text-sm font-medium shadow-lg">
@@ -226,7 +232,7 @@ export default function PremiumDeliveryScheduler() {
           </p>
         </div>
 
-        {/* Service Notice */}
+
         <div className="mb-8 backdrop-blur-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-2xl p-6 border border-amber-400/20 shadow-xl">
           <div className="flex items-start space-x-4">
             <div className="flex-shrink-0 bg-amber-500/20 rounded-lg p-2">
@@ -255,7 +261,7 @@ export default function PremiumDeliveryScheduler() {
         </div>
 
         <div className="grid xl:grid-cols-3 gap-8">
-          {/* Advanced Date Picker */}
+         
           <div className="xl:col-span-2 backdrop-blur-xl bg-white/5 rounded-3xl p-8 border border-white/10 shadow-2xl">
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center space-x-3">
@@ -275,7 +281,7 @@ export default function PremiumDeliveryScheduler() {
               </div>
             </div>
 
-            {/* Calendar Header */}
+           
             <div className="flex items-center justify-between mb-6">
               <button
                 onClick={() =>
@@ -310,13 +316,12 @@ export default function PremiumDeliveryScheduler() {
               </button>
             </div>
 
-            {/* Calendar Grid */}
+           
             <div
               className={`transition-all duration-300 ${
                 isAnimating ? "opacity-50 scale-95" : "opacity-100 scale-100"
               }`}
             >
-              {/* Week day headers */}
               <div className="grid grid-cols-7 gap-2 mb-4">
                 {weekDays.map((day) => (
                   <div
@@ -328,7 +333,7 @@ export default function PremiumDeliveryScheduler() {
                 ))}
               </div>
 
-              {/* Calendar days */}
+        
               <div className="grid grid-cols-7 gap-2">
                 {generateCalendarDays().map((dayObj, index) => {
                   const { date, isCurrentMonth } = dayObj;
@@ -387,7 +392,7 @@ export default function PremiumDeliveryScheduler() {
               </div>
             </div>
 
-            {/* Quick Date Selection */}
+        
             <div className="mt-8 p-6 bg-white/5 rounded-2xl border border-white/10">
               <h4 className="font-semibold mb-4 text-slate-300">
                 Quick Select
@@ -425,9 +430,9 @@ export default function PremiumDeliveryScheduler() {
             </div>
           </div>
 
-          {/* Time Selection & Summary */}
+
           <div className="space-y-6">
-            {/* Time Slot Selection */}
+
             <div className="backdrop-blur-xl bg-white/5 rounded-3xl p-8 border border-white/10 shadow-2xl">
               <div className="flex items-center mb-6">
                 <Clock className="w-6 h-6 text-cyan-400 mr-3" />
@@ -478,7 +483,7 @@ export default function PremiumDeliveryScheduler() {
               </div>
             </div>
 
-            {/* Delivery Summary */}
+
             {selectedDate && (
               <div className="backdrop-blur-xl bg-white/5 rounded-3xl p-8 border border-white/10 shadow-2xl">
                 <h3 className="text-2xl font-semibold mb-6 flex items-center">
@@ -532,9 +537,9 @@ export default function PremiumDeliveryScheduler() {
               </div>
             )}
 
-            {/* Action Buttons */}
+           
             <div className="flex space-x-4">
-              <button className="flex-1 bg-white/10 hover:bg-white/20 text-white px-6 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center group">
+              <button onClick={() => navigate(-1)} className="flex-1 bg-white/10 hover:bg-white/20 text-white px-6 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105 backdrop-blur-sm border border-white/20 flex items-center justify-center group">
                 <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
                 Back
               </button>
@@ -553,7 +558,7 @@ export default function PremiumDeliveryScheduler() {
           </div>
         </div>
 
-        {/* Premium Features */}
+    
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {

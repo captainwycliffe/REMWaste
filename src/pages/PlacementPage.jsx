@@ -94,14 +94,13 @@ export default function PlacementPage() {
         {/* <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Cpath d="M30 30l15-15v30l-15-15zm0 0l-15 15v-30l15 15z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20" /> */}
         
         {/* Floating elements */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl animate-pulse" />
+        {/* <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl animate-pulse" />
         <div className="absolute bottom-40 right-20 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl animate-pulse delay-1000" />
-        <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl animate-pulse delay-2000" />
+        <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl animate-pulse delay-2000" /> */}
       </div>
 
       <div className="relative z-10 p-4 sm:p-10">
         <div className="max-w-4xl mx-auto">
-          {/* Header Section */}
           <div className={`mb-12 transition-all duration-1000 ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <StepProgress />
             
@@ -113,7 +112,7 @@ export default function PlacementPage() {
             </p>
           </div>
 
-          {/* Placement Options */}
+         
           <div className={`grid gap-8 sm:grid-cols-2 mb-12 transition-all duration-1000 delay-300 ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {placementOptions.map((option, index) => (
               <div
@@ -126,15 +125,15 @@ export default function PlacementPage() {
                 style={{ animationDelay: `${index * 200 + 500}ms` }}
                 onClick={() => setSelectedOption(option.id)}
               >
-                {/* Card Background */}
+            
                 <div className={`absolute inset-0 bg-gradient-to-br ${option.gradient} opacity-50`} />
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 to-gray-800/95 backdrop-blur-sm" />
                 
-                {/* Hover effect */}
+
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <div className="relative p-8">
-                  {/* Icon and Status */}
+
                   <div className="flex items-start justify-between mb-6">
                     <div className={`p-3 rounded-2xl bg-gradient-to-br ${option.gradient} text-white`}>
                       {option.icon}
@@ -144,7 +143,6 @@ export default function PlacementPage() {
                     </div>
                   </div>
                   
-                  {/* Title and Description */}
                   <div className="mb-6">
                     <h2 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
                       {option.title}
@@ -153,7 +151,6 @@ export default function PlacementPage() {
                     <p className="text-gray-300 text-sm leading-relaxed">{option.description}</p>
                   </div>
                   
-                  {/* Benefits */}
                   <div className="space-y-2">
                     {option.benefits.map((benefit, idx) => (
                       <div key={idx} className="flex items-center gap-2 text-sm">
@@ -163,7 +160,6 @@ export default function PlacementPage() {
                     ))}
                   </div>
                   
-                  {/* Selection indicator */}
                   <div className={`mt-6 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full transition-all duration-300 ${
                     selectedOption === option.id ? 'w-full opacity-100' : 'w-0 opacity-0'
                   }`} />
@@ -172,11 +168,9 @@ export default function PlacementPage() {
             ))}
           </div>
 
-          {/* Permit Information */}
           {selectedOption === 'public' && (
             <div className={`space-y-6 mb-12 transition-all duration-500 ${selectedOption === 'public' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
               <div className="grid gap-6 sm:grid-cols-2">
-                {/* Permit Info Card */}
                 <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20 p-6">
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-amber-500/20 rounded-xl">
@@ -196,7 +190,6 @@ export default function PlacementPage() {
                   </div>
                 </div>
                 
-                {/* Processing Time Card */}
                 <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 p-6">
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-blue-500/20 rounded-xl">
@@ -216,7 +209,6 @@ export default function PlacementPage() {
                 </div>
               </div>
               
-              {/* Pro Tip */}
               <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 p-6">
                 <div className="flex items-start gap-4">
                   <div className="p-2 bg-purple-500/20 rounded-xl">
@@ -233,7 +225,6 @@ export default function PlacementPage() {
             </div>
           )}
 
-          {/* Navigation */}
           <div className={`flex justify-between items-center pt-8 transition-all duration-1000 delay-700 ${animateIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <button
               onClick={() => navigate(-1)}
@@ -259,12 +250,11 @@ export default function PlacementPage() {
         </div>
       </div>
 
-      {/* Enhanced Photo Upload Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-3xl shadow-2xl w-full max-w-2xl transform transition-all duration-300 scale-100">
             <div className="p-8">
-              {/* Modal Header */}
+            
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-blue-500/20 rounded-xl">
@@ -283,7 +273,7 @@ export default function PlacementPage() {
                 </button>
               </div>
 
-              {/* Info Banner */}
+            
               <div className="bg-blue-500/10 border border-blue-500/20 rounded-2xl p-4 mb-6">
                 <div className="flex items-start gap-3">
                   <Info className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
@@ -296,7 +286,7 @@ export default function PlacementPage() {
                 </div>
               </div>
 
-              {/* Upload Area */}
+
               <div
                 className={`relative border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all duration-300 ${
                   isDragging
@@ -348,7 +338,6 @@ export default function PlacementPage() {
                 />
               </div>
 
-              {/* Tips */}
               <div className="mt-6 p-4 bg-gray-800/50 rounded-xl">
                 <h4 className="text-white font-medium mb-2 flex items-center gap-2">
                   <Camera className="w-4 h-4 text-blue-400" />
@@ -362,7 +351,6 @@ export default function PlacementPage() {
                 </ul>
               </div>
 
-              {/* Modal Actions */}
               <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-700">
                 <button
                   className="px-6 py-3 bg-white/5 backdrop-blur-sm text-white rounded-xl border border-white/10 hover:bg-white/10 transition-all duration-300 font-medium"

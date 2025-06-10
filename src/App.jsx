@@ -8,7 +8,7 @@ import Checkout from './pages/Checkout'
 export default function App() {
   return (
     <Routes>
-      <Route element={<Layout />}>
+      <Route>
         <Route path="/" element={<HomePage />} />
         <Route path="/permit-check" element={<PlacementPage />} />
         <Route path="/date" element={<DatePickerPage />} />

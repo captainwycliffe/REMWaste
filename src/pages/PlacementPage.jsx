@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight, Camera, MapPin, Shield, Clock, AlertTriangle, CheckCircle, Upload, X, Info, Star, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'
 import StepProgress from '../components/StepProgress'
+import { useLocation } from 'react-router-dom';
 
 export default function PlacementPage() {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -18,6 +19,9 @@ export default function PlacementPage() {
   }, []);
 
   const navigate = useNavigate()
+  const location = useLocation();
+  const selectedSkip = location.state?.selectedSkip;
+  console.log('Selected Skip:', selectedSkip);  
 
   const openModal = () => {
     if (!selectedOption) return;
@@ -366,7 +370,7 @@ export default function PlacementPage() {
                   }`}
                   onClick={() => {
                     closeModal();
-                    navigate('/date');
+                    navigate('/date', { state: { selectedSkip } });
                   }}
                   disabled={!uploadedPhoto}
                 >

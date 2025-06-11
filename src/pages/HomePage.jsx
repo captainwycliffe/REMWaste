@@ -236,6 +236,8 @@ function SkipCard({ skip, isSelected, onSelect, index }) {
 export default function HomePage() {
 
   const [selectedSkip, setSelectedSkip] = useState(null);
+  console.log('Selected Skip:', selectedSkip);  
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [filterBy, setFilterBy] = useState("all");
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -449,7 +451,7 @@ export default function HomePage() {
                   </button>
                   <button
                     className="group px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 transform hover:scale-105"
-                    onClick={() => navigate('/permit-check')}
+                    onClick={() => navigate('/permit-check', { state: { selectedSkip } })}
                   >                    Continue to Booking
                     <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </button>

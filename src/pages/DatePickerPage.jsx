@@ -16,6 +16,7 @@ import {
 
 import { useNavigate } from 'react-router-dom'
 import StepProgress from '../components/StepProgress'
+import { useLocation } from 'react-router-dom';
 
 
 export default function PremiumDeliveryScheduler() {
@@ -46,6 +47,9 @@ export default function PremiumDeliveryScheduler() {
   };
 
   const navigate = useNavigate()
+  const location = useLocation();
+  const selectedSkip = location.state?.selectedSkip;
+  console.log('Selected Skip:', selectedSkip);  
 
 //   const formatShortDate = (date) => {
 //     return date.toLocaleDateString("en-US", {
@@ -73,6 +77,7 @@ export default function PremiumDeliveryScheduler() {
   const getFirstDayOfMonth = (date) => {
     return new Date(date.getFullYear(), date.getMonth(), 1).getDay();
   };
+
 
   const generateCalendarDays = () => {
     const daysInMonth = getDaysInMonth(currentDate);
@@ -550,6 +555,8 @@ export default function PremiumDeliveryScheduler() {
                     ? "bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-blue-500/25"
                     : "bg-slate-700 text-slate-400 cursor-not-allowed"
                 }`}
+                onClick={() => navigate('/payment', { state: { selectedSkip } })}
+
               >
                 {selectedDate ? "Continue to Payment" : "Select Date First"}
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />

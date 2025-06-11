@@ -223,7 +223,7 @@ export default function PremiumDeliveryScheduler() {
             <Truck className="w-10 h-10 text-white" />
           </div>
 
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
+          <h1 className="text-3xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent">
             Elite Delivery Scheduling
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
@@ -266,7 +266,7 @@ export default function PremiumDeliveryScheduler() {
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center space-x-3">
                 <Calendar className="w-7 h-7 text-blue-400" />
-                <h2 className="text-3xl font-bold">Select Your Date</h2>
+                <h2 className="text-lg lg:text-3xl font-bold">Select Your Date</h2>
               </div>
 
               <div className="flex items-center space-x-2">
